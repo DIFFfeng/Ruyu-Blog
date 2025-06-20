@@ -178,7 +178,7 @@ function applyLinkFunc() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/mixin.scss";
+@use "@/styles/mixin.scss" as *;
 
 :deep(.el-dialog__body){
   padding-top: 0;

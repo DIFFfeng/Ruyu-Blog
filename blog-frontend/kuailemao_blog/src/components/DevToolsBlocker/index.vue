@@ -32,6 +32,7 @@ const props = defineProps({
   // 是否启用开发者工具禁用功能
   enableDevToolsBlocker: {
     type: Boolean,
+    // default: true
     default: true
   },
   // 警告消失时间（毫秒）

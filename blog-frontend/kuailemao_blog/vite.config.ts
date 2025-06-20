@@ -56,7 +56,7 @@ export default defineConfig(({ mode }: ConfigEnv) => {
             preprocessorOptions: {
                 scss: {
                     javascriptEnabled: true,
-                    additionalData: '@import "./src/styles/variable.scss";',
+                    additionalData: '@use "./src/styles/variable.scss" as *;',
                 },
             },
             postcss: {
@@ -91,11 +91,11 @@ export default defineConfig(({ mode }: ConfigEnv) => {
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/api/, '')
                 },
-                '/wapi': {
+                /* '/wapi': {
                     target: `${loadEnv(mode, process.cwd()).VITE_MUSIC_SERVE}`,
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/wapi/, '')
-                }
+                } */
             }
         }
     }

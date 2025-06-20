@@ -446,7 +446,7 @@ function addParentComment() {
 </template>
 
 <style scoped lang="scss">
-@import "./index";
+@use "./index.scss" as *;
 
 .more {
   display: flex;

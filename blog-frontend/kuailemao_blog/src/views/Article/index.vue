@@ -578,7 +578,7 @@ function ReadingModeFunc() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/mixin.scss";
+@use "@/styles/mixin.scss" as *;
 
 
 .sticky_layout {

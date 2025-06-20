@@ -1,7 +1,6 @@
-@import "element_style";
-@import "scrollBar";
-@import "cursor";
-@import "woff";
+@use "./scrollBar.scss" as *;
+@use "./cursor.scss" as *;
+@use "./woff.scss" as *;
 
 // 全局样式设置文件
 // 侧边栏卡片的宽度

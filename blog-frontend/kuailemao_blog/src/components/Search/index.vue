@@ -265,7 +265,7 @@ function changeToggle() {
 </template>
 
 <style scoped lang="scss">
-@import "@/styles/mixin.scss";
+@use "@/styles/mixin.scss" as *;
 
 // 搜索关键字高亮
 :deep(.highlight) {

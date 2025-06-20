@@ -60,7 +60,7 @@ const websiteStore = useWebsiteStore()
 </template>
 
 <style scoped lang="scss">
-@import url(https://fonts.googleapis.com/css?family=Righteous);
+@use "https://fonts.googleapis.com/css?family=Righteous" as *;
 
 *, *:before, *:after {
   box-sizing: border-box;

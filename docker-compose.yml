@@ -1,0 +1,60 @@
+# 指定 docker-compose 文件的版本
+version: '3'
+
+# 定义服务
+services:
+  # hbbs：ID注册服务器，用于处理RustDesk的设备注册和连接请求
+  hbbs:
+    # 指定容器名称
+    container_name: hbbs
+    # 指定使用的镜像和版本
+    image: rustdesk/rustdesk-server:1.1.12
+    # 运行命令，启动 hbbs 服务
+    command: hbbs
+    # 使用主机网络模式，直接使用宿主机的网络，可以避免端口映射的问题
+    network_mode: "host"
+    # 数据卷挂载，将容器内的 /root 目录映射到主机的 /data/rustdesk/data 目录
+    # 用于持久化存储配置文件、密钥等数据
+    volumes:
+      - /opt/myRustdesk/data:/root
+    # 环境变量配置
+    #environment:
+      # 设置中继密钥，用于 hbbs 和 hbbr 之间的通信验证
+      # 是服务端 hbbs 和 hbbr 之间通信使用的密钥
+      # - RELAY_KEY=123456
+      # SSL证书配置（可选）
+      # - CERT_FILE=/root/cert.pub
+      # - KEY_FILE=/root/cert.key
+    # 容器重启策略：always 表示容器退出时总是重启
+    restart: always
+
+  # hbbr：中继服务器，用于处理远程连接的数据传输
+  hbbr:
+    container_name: hbbr
+    image: rustdesk/rustdesk-server:1.1.12
+    # 运行命令，启动 hbbr 服务
+    command: hbbr
+    network_mode: "host"
+    volumes:
+      - /opt/myRustdesk/data:/root
+    #environment:
+      # 中继密钥必须与 hbbs 服务配置的密钥相同
+      #- RELAY_KEY=123456
+    restart: always
+
+# 端口说明（使用 host 网络模式时自动使用以下端口）：
+# hbbs 服务使用的端口：
+# - 21115: TCP，用于设备注册
+# - 21116: TCP，用于 NAT 类型测试
+# - 21118: TCP，用于 ID 注册服务器的 Web 服务
+#
+# hbbr 服务使用的端口：
+# - 21117: TCP，用于中继服务器
+# - 21119: TCP，用于中继服务器的 Web 服务
+
+# 注意事项：
+# 1. 确保防火墙开放上述端口
+# 2. RELAY_KEY 建议使用复杂的随机字符串
+# 3. 数据目录 /data/rustdesk/data 需要提前创建
+# 4. 如果需要使用 SSL，请将证书文件放在数据目录中
+# 5. 服务器重启时容器会自动启动
