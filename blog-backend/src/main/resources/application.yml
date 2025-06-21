@@ -168,7 +168,12 @@ http_pool:
   validate_after_inactivity: 2000
 # 连接 minio
 minio:
-  endpoint: http://127.0.0.1:9092
+  endpoint: http://localhost:9000
+#  docker-compose 配置 250422 未阉割版本
   accessKey: admin
-  secretKey: admin123
+  secretKey: 12345678
+#  win 下载的旧版本 （刚刚好，五月更新阉割了 公开桶的版本  ）
+#  accessKey: TMW4EAZXYU4UGDU20B10
+#  secretKey: YJb2iXCgOT/0o3clP4InbvK402hMRsZhCNW+NqWQ
+
   bucketName: ruyublog

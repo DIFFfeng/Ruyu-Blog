@@ -32,8 +32,7 @@ const props = defineProps({
   // 是否启用开发者工具禁用功能
   enableDevToolsBlocker: {
     type: Boolean,
-    // default: true
-    default: true
+    default: false
   },
   // 警告消失时间（毫秒）
   autoDismissTime: {
@@ -74,7 +73,8 @@ const isEnabled = computed(() => {
   // 在开发模式下，仅在明确请求时启用
   // 在生产模式下，除非明确禁用，否则始终启用
   // 如果 VITE_ENABLE_DEV_TOOLSBLOCKER 明确设置为 false，则不启用
-  return PROD_MODE ? props.enableDevToolsBlocker : false;
+  // return PROD_MODE ? props.enableDevToolsBlocker : false;
+  return  false;
 });
 
 // 监听警告状态，设置自动消失

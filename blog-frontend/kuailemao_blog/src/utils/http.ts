@@ -92,6 +92,7 @@ http.interceptors.response.use(
             message = "系统接口" + message.substring(message.length - 3) + "异常";
         }
         if (!error?.config?.url?.startsWith("https://v1.hitokoto.cn")) {
+            // 这里校验的是请求地址
             ElMessage.error(message)
         }
         return Promise.reject(error.response)
