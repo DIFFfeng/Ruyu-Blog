@@ -2,26 +2,26 @@
 <template>
   <div>
     <div>
-      <InfoCard/>
+      <InfoCard />
     </div>
     <div>
       <Card title="公告" prefixIcon="announcement" suffix-icon="jt_y" :isDithering="true" :isArrow="true"
-            @invoke="announcement">
+        @invoke="announcement">
         <pre class="pre-text">
 {{ useWebsite.webInfo?.sidebarAnnouncement }}
         </pre>
       </Card>
     </div>
     <div>
-      <ElectronicClocks/>
+      <ElectronicClocks />
     </div>
     <div>
-      <RandomArticle/>
+      <RandomArticle />
     </div>
     <div>
-      <TagListCard/>
+      <TagListCard />
     </div>
-    <ChargingList/>
+    <ChargingList />
     <div>
       <Card title="每日鸡汤" prefix-icon="edit" suffix-icon="rotate" :isRotate="true" :isScale="true" @invoke="soupSub">
         <div class="soup-container">
@@ -50,10 +50,10 @@
 <script setup lang="ts">
 import InfoCard from '@/components/CardInfo/index.vue'
 import Card from '@/components/Card/index.vue'
-import {ref, onMounted} from 'vue'
-import {getSoup} from "@/apis/thirdParty";
+import { ref, onMounted } from 'vue'
+import { getSoup } from "@/apis/thirdParty";
 import useWebsiteStore from "@/store/modules/website.ts";
-import {ElMessageBox} from "element-plus";
+import { ElMessageBox } from "element-plus";
 
 const useWebsite = useWebsiteStore()
 
@@ -125,14 +125,15 @@ onMounted(() => {
 
 .pre-text {
   text-align: left;
-  overflow: auto; /* 如果内容超出了元素盒子的宽度，显示滚动条 */
+  overflow: auto;
+  /* 如果内容超出了元素盒子的宽度，显示滚动条 */
 }
 
 .soup-container {
   position: relative;
   padding: 10px 25px;
   margin: 10px 0;
-  
+
   .soup-text {
     font-size: 15px;
     line-height: 1.6;
